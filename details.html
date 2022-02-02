@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="styles/details.css">
+    <title id="title">
+    </title>
+</head>
+
+<body style="background-color:rgb(23, 20, 29); text-align: center;" onload="getPDF()">
+    <div id="manga_pdf">
+
+    </div>
+    <script>
+
+        function GetURLParameter(sParam) {
+            var sPageURL = window.location.search.substring(1);
+            var sURLVariables = sPageURL.split('&');
+            for (var i = 0; i < sURLVariables.length; i++) {
+                var sParameterName = sURLVariables[i].split('=');
+                if (sParameterName[0] == sParam) {
+                    return sParameterName[1];
+                }
+            }
+        }
+
+
+        function getPDF() {
+            var url = 'https://tempest-scan.herokuapp.com/database'
+            var xmlHttp = new XMLHttpRequest();
+            // xmlHttp.overrideMimeType("application/json");
+            xmlHttp.open("GET", url, false);
+            xmlHttp.setRequestHeader('key', '4aEdFoYwMAyfwZHqGFuvfgM2arXyOm51')
+            xmlHttp.send(null);
+            var json = JSON.parse(xmlHttp.responseText);
+
+            var id = GetURLParameter('id');
+            if(json[id]!=null){
+            url = json[id]['manga_pdf_url'];
+            document.getElementById("manga_pdf").innerHTML += `
+                <iframe src="${url}" width="50%%"
+                height="100%" allow="autoplay">
+                <p>This browser does not support PDF!</p>
+                </iframe>`;
+
+            }
+            else{
+                window.location.replace('https://joshgamerz.github.io/TempestScans/');
+            }
+
+          
+
+        }
+    </script>
+</body>
+
+</html>
