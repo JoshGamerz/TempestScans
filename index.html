@@ -1,0 +1,84 @@
+<html>
+
+<head>
+    <script src="./main.js"></script>
+    <meta property="og:title" content=" Tempest Scans" />
+    <meta property="og:description" content="Read free Manhua/Manhwa online at Tempest Scans with no interruptions!" />
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/935410506456518696/935608638406533120/image_2022-01-25_133455.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/index.css">
+    <title>Tempest Scans</title>
+    <div class="topnav">
+        <img src="https://cdn.discordapp.com/attachments/935410506456518696/935608638406533120/image_2022-01-25_133455.png">
+        <!-- <a class="active" href=""></a> -->
+        <input type="text" class="textbox" placeholder="Search.." style="color: white;">
+        <button onclick="location.href = './staffportal.html';">Login</button> s
+    </div>
+
+    <body style="background-color:rgb(23, 20, 29);" onload="generateCards()">
+        <!-- <div id="bannerimage"></div> -->
+
+        <div class="slideshow-container">
+
+            <div class="mySlides fade">
+                <img src="https://cdn.discordapp.com/attachments/935796717331304468/936246419029884928/Untitled261_20220125122712.png" style="width:100%">
+                <!-- <div class="text">Caption Text</div> -->
+            </div>
+
+            <div class="mySlides fade">
+
+                <img src="https://cdn.discordapp.com/attachments/935796717331304468/936207996923551784/Z.png" style="width:100%">
+                <!-- <div class="text">Caption Two</div> -->
+            </div>
+
+            <div class="mySlides fade">
+                <img src="https://cdn.discordapp.com/attachments/935796717331304468/936207996923551784/Z.png" style="width:100%">
+                <!-- <div class="text">Caption Three</div> -->
+            </div>
+
+        </div>
+        <br>
+
+        <div style="text-align:center">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+        <script>
+            var slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+                var dots = document.getElementsByClassName("dot");
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) {
+                    slideIndex = 1
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " active";
+                setTimeout(showSlides, 2000); // Change image every 2 seconds
+            }
+        </script>
+
+        <div class="cards" id="cards">
+
+        </div>
+        <script>
+            function test(id) {
+                console.log(id);
+            }
+        </script>
+
+    </body>
+</head>
+
+</html>

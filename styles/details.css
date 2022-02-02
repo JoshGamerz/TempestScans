@@ -1,0 +1,21 @@
+.details_container{
+   margin: 0 auto;
+    max-width: 1260px;
+    font-family: sans-serif; 
+    margin-top: 60px;
+    background-color: rgba(34, 34, 34, 34);
+    overflow: hidden;
+
+}
+
+.details_image{
+    margin: 20px;
+    float: left; 
+}
+.details_title{
+    margin: 20px;
+    font-size: 40px;
+    float:left; 
+    color: white;
+
+}
