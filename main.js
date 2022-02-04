@@ -6,11 +6,6 @@ function generateCards() {
     xmlHttp.setRequestHeader('key', '4aEdFoYwMAyfwZHqGFuvfgM2arXyOm51')
     xmlHttp.send(null);
     var json = JSON.parse(xmlHttp.responseText);
-    console.log(json);
-    for (var x in json) {
-        console.log(json[x]['manga_name']);
-    }
-
     for (var key in json) {
         document.getElementById("cards").innerHTML +=
             `<div class="card" id=${key} onClick="test(this.id)"> <img class="card-image" src=${json[key]['manga_thumbnail_url']} alt="image"> <div class="card-content"> <h3>${json[key]['manga_name']}</h3> </div> </div>`;
@@ -37,7 +32,6 @@ function save_to_db() {
 
         xhr.onreadystatechange = function() {
             if (xhr.readyState == XMLHttpRequest.DONE) {
-                // console.log(JSON.parse(xhr.responseText['status']));
                 if (JSON.parse(xhr.responseText)['status'] == 'success') {
                     show_snackbar("Data saved to database successfully!");
                 }
@@ -71,4 +65,21 @@ function show_snackbar(text) {
 
     // After 3 seconds, remove the show class from DIV
     setTimeout(function() { snackbar.className = snackbar.className.replace("show", ""); }, 3000);
+}
+
+
+function search(){
+    query = document.getElementById("search-bar").value;
+    var url = 'https://tempest-scan.herokuapp.com/search?query='+query;
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", url, false);
+    xmlHttp.setRequestHeader('key', '4aEdFoYwMAyfwZHqGFuvfgM2arXyOm51')
+    xmlHttp.send(null);
+    var json = JSON.parse(xmlHttp.responseText);
+    const card_element = document.getElementById("cards");
+    card_element.innerHTML = '';
+    for (var key in json) {
+        document.getElementById("cards").innerHTML +=
+            `<div class="card" id=${key} onClick="test(this.id)"> <img class="card-image" src=${json[key]['manga_thumbnail_url']} alt="image"> <div class="card-content"> <h3>${json[key]['manga_name']}</h3> </div> </div>`;
+    }
 }
